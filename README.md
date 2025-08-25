@@ -34,6 +34,14 @@ firefox/
 │   └── popup.html          # Popup UI
 ```
 
+## UI Sample
+
+<div style="display: flex; gap: 12px; justify-content: center; align-items: center;">
+    <img src="./public/custom-newtab.png" alt="Custom New Tab" width="220"/>
+    <img src="./public/popup.png" alt="Popup UI" width="220"/>
+    <img src="./public/quote.png" alt="Quote UI" width="220"/>
+</div>
+
 ## How It Works
 - **New Tab Page**: Replaces the default Firefox new tab with a custom page showing a motivational quote, search box, and top sites.
 - **Motivational Quote**: Displayed with a modern animated style using CSS glassmorphism and pop-in effect.
@@ -61,9 +69,6 @@ firefox/
 
 ## Permissions
 - `tabs`, `activeTab`, `<all_urls>`, `webRequest`, `notifications`: Required for tab management, notifications, and custom new tab functionality.
-
-## License
-MIT
 
 ## Author
 Saikat709

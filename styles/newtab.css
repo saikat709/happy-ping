@@ -8,22 +8,27 @@ body {
 .container {
     max-width: 900px;
     margin: 60px auto 0 auto;
-    padding: 0 24px;
+    padding: 0 1px;
+    margin-bottom: 50px;
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 32px auto;
-    width: 96px;
-    height: 96px;
-    background: url('https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo-lg-high-res.7ba3ce7e0b7a.png') no-repeat center center;
-    background-size: contain;
+
+.title {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    padding-inline: 2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .search-box {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .search-input {
@@ -48,19 +53,47 @@ body {
     gap: 24px;
     margin-top: 24px;
 }
+
 .site {
     text-align: center;
     padding: 16px 0;
-    background: #fff;
+    background: linear-gradient(135deg, #f8fafc 0%, #e3e6f3 100%);
     border-radius: 12px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, transform 0.4s;
     text-decoration: none;
     color: inherit;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    animation: siteCardPop 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
+
 .site:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    transform: scale(1.03) translateY(-2px);
+    transform: translateY(-2px);
+    border: #d7d7db solid 1px;
+    background-color: linear-gradient(135deg, #b1b1eb 0%, #60608a 100%);
 }
+
+@keyframes siteCardPop {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.04);
+    }
+    80% {
+        transform: translateY(2px) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1.0);
+    }
+}
+
 .site-icon {
     width: 40px;
     height: 40px;
@@ -87,7 +120,8 @@ body {
     bottom: 48px;
     transform: translateX(-50%);
     font-size: 2em;
-    font-weight: 800;
+    font-weight: 900;
+    width: min(80%, 800px);
     font-family: 'Montserrat', 'Segoe UI', 'Arial Black', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     letter-spacing: 1.3px;
@@ -97,14 +131,14 @@ body {
     backdrop-filter: blur(12px) saturate(1.5);
     -webkit-backdrop-filter: blur(12px) saturate(1.5);
     border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(31, 162, 255, 0.10), 0 2px 12px rgba(221,36,118,0.08);
-    padding: 15px 26px;
+    box-shadow: 0 8px 32px rgba(31, 162, 255, 0.10), 0 7px 12px rgba(221,36,118,0.08);
+    padding: 12px 20px;
     border: 2px solid rgba(31,162,255,0.18);
     opacity: 1;
-    display: block;
+    display: none;
     z-index: 9999;
     transition: all 0.4s, background 0.4s, color 0.4s;
-    animation: quoteGlassPop 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: quoteGlassPop 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .motivational-quote:hover {
@@ -117,62 +151,22 @@ body {
 @keyframes quoteGlassPop {
     0% {
         opacity: 0;
-        transform: translateX(-50%) scale(0.8) translateY(40px);
+        transform: translate(-50%, 40px) scale(0.8);
+        bottom: 1rem;
     }
-    60% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.05) translateY(-6px);
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -10px) scale(1.1);
     }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.0) translateY(0);
-    }
-}
-
-@keyframes quotePopIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) scale(0.8) translateY(60px);
-        filter: blur(12px);
-    }
-    20% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.08) translateY(-8px);
-        filter: blur(0px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.02) translateY(0);
-        text-shadow: 0 2px 32px #fff, 0 0 48px #1fa2ff, 0 0 8px #dd2476;
-    }
-    80% {
-        opacity: 1;
-        transform: translateX(-50%) scale(1.0) translateY(0);
+    75% {
+        opacity: 0.9;
+        transform: translate(-50%, 5px) scale(0.95);
     }
     100% {
-        opacity: 0;
-        transform: translateX(-50%) scale(0.8) translateY(-120px);
-        filter: blur(16px);
-    }
-}
-
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    60% {
         opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-1800px);
+        transform: translate(-50%, 0) scale(1.0);
     }
 }
-
 
 @media screen and ( prefers-color-scheme: dark ) {
     body {
@@ -184,20 +178,20 @@ body {
         border: 1px solid #33333d;
         color: #ddd;
     }
+    
     .search-input:focus {
         border-color: #0060df;
     }
+
     .site {
-        background: #131314;
+        background: linear-gradient(135deg, #23243a 0%, #181a24 100%);
         box-shadow: 0 1px 4px rgba(0,0,0,0.4);
-    }   
-    .site:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.6);
     }
 
     .motivational-quote {
         color: #302d2d;
         background-color: #dfd2d2;
-        border-color: black;
+        border-color: rgb(255, 255, 255);
+        border-width: 3px;
     } 
 }

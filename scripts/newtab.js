@@ -47,4 +47,12 @@ function displayMotivationalQuote(){
 }
 
 displayTopSites();
-displayMotivationalQuote();
+
+browser.storage.local.get("showQuote").then((result) => {
+    if (result.showQuote === undefined || result.showQuote) {
+        displayMotivationalQuote();
+    }
+}).catch((error) => {
+    console.error("Error getting showQuote preference:", error);
+    displayMotivationalQuote();
+});
