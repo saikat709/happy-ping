@@ -4,37 +4,38 @@ browser.runtime.onInstalled.addListener(() => {
   console.log('HappyPing extension installed');
 });
 
+browser.windows.onCreated.addListener((window) => {
+  console.log(`New window created with ID: ${window.id}`); 
+});
+
+function displayText(text) {
+  document.body.innerHTML = `<h1 style="text-align: center; margin-top: 50px;">${text}</h1>`;
+  console.log(document.body.innerHTML);
+}
+
+browser.windows.onRemoved.addListener((windowId) => {
+  console.log(`Window with ID: ${windowId} closed`);
+});
+
 browser.runtime.onStartup.addListener(() => {
   console.log('HappyPing extension started');
 });
 
+browser.tabs.onCreated.addListener((tab) => {
+  console.log(`New tab created with ID: ${tab.id}, URL: ${tab.url}`);
 
-browser.tabs.beforeCreate.addListener((tab) => {
-  console.log(`New tab created with ID: ${tab.id}`);
+  if ( tab.url && tab.url.trim() === "about:newtab" ) {
+    browser.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: displayText,
+      args: ["Hello, New Tab!"]
+    })
+    .catch(err => console.error('Script injection failed: ', err));
+  }
 
-  browser.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ['../scripts/content.js']
-  }).then(() => {
-    console.log('Content script injected into new tab');
-  }).catch(err => {
-    console.error('Error injecting content script:', err);
-  });
-
-
-  browser.tabs.sendMessage(
-    tab.id, 
-    { action: 'ping', data: 'Hello from background!' }
-  ).then(response => {
-    console.log('Response from content script:', response);
-  }).catch(err => {
-    console.error('Error sending message to content script:', err);
-  });
+  console.log("After injection");
 });
 
-browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.url) {
-    console.log(`Tab ${tabId} updated with URL: ${changeInfo.url}`);
-    // You can perform actions here based on the tab's URL change
-  }
+browser.tabs.onUpdated.addListener((tabId, changeInfo, _) => {
+  console.log(`Tab ${tabId} updated: `, changeInfo);
 });

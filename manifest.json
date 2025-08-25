@@ -24,10 +24,16 @@
       "js": ["scripts/content.js"]
     }
   ],
+  "chrome_url_overrides": {
+    "newtab": "templates/newtab.html"
+  },
   "permissions": [
     "tabs",
     "scripting",
     "activeTab",
-    "<all_urls>" 
+    "<all_urls>",
+    "webRequest",
+    "notifications",
+    "topSites"
   ]
 }
