@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    background: #f9f9fb;
+    color: #222;
+}
+
+.container {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 32px auto;
+    width: 96px;
+    height: 96px;
+    background: url('https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo-lg-high-res.7ba3ce7e0b7a.png') no-repeat center center;
+    background-size: contain;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 18px;
+    font-size: 1.2em;
+    border: 1px solid #d7d7db;
+    border-radius: 24px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #0060df;
+}
+
+.top-sites {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+.site {
+    text-align: center;
+    padding: 16px 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+.site:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.site-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #f0f0f4;
+    display: inline-block;
+    object-fit: contain;
+}
+.site-title {
+    font-size: 1em;
+    font-weight: 500;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+/* Animated text appearance part */
+.motivational-quote {
+    position: fixed;
+    left: 50%;
+    bottom: 48px;
+    transform: translateX(-50%);
+    font-size: 2em;
+    font-weight: 800;
+    font-family: 'Montserrat', 'Segoe UI', 'Arial Black', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    letter-spacing: 1.3px;
+    color: #2c1e1e;
+    border-color: #131314;
+    background: rgba(22, 16, 16, 0.22);
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(31, 162, 255, 0.10), 0 2px 12px rgba(221,36,118,0.08);
+    padding: 15px 26px;
+    border: 2px solid rgba(31,162,255,0.18);
+    opacity: 1;
+    display: block;
+    z-index: 9999;
+    transition: all 0.4s, background 0.4s, color 0.4s;
+    animation: quoteGlassPop 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.motivational-quote:hover {
+    box-shadow: 0 8px 32px rgba(31, 162, 255, 0.20), 0 4px 16px rgba(221,36,118,0.12);
+    background: rgba(22, 16, 16, 0.32);
+    color: #fff;
+    scale: 1.02;
+}
+
+@keyframes quoteGlassPop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8) translateY(40px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.05) translateY(-6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.0) translateY(0);
+    }
+}
+
+@keyframes quotePopIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8) translateY(60px);
+        filter: blur(12px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.08) translateY(-8px);
+        filter: blur(0px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.02) translateY(0);
+        text-shadow: 0 2px 32px #fff, 0 0 48px #1fa2ff, 0 0 8px #dd2476;
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.0) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8) translateY(-120px);
+        filter: blur(16px);
+    }
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-1800px);
+    }
+}
+
+
+@media screen and ( prefers-color-scheme: dark ) {
+    body {
+        background: #121217;
+        color: #ddd;
+    }
+    .search-input {
+        background: #1e1e28;
+        border: 1px solid #33333d;
+        color: #ddd;
+    }
+    .search-input:focus {
+        border-color: #0060df;
+    }
+    .site {
+        background: #131314;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }   
+    .site:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    }
+
+    .motivational-quote {
+        color: #302d2d;
+        background-color: #dfd2d2;
+        border-color: black;
+    } 
+}

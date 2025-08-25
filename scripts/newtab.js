@@ -1,4 +1,5 @@
 "use strict";
+import startLines from "../constants/startLines.js";
 
 async function displayTopSites() {
   const topSitesContainer = document.getElementById("top-sites-container");
@@ -37,4 +38,13 @@ async function displayTopSites() {
   }
 }
 
+
+function displayMotivationalQuote(){
+    const line = startLines[Math.floor(Math.random() * startLines.length)];
+    const quoteElement = document.getElementById("motivational-quote");
+    quoteElement.textContent = line;
+    quoteElement.style.display = "block";
+}
+
 displayTopSites();
+displayMotivationalQuote();
