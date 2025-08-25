@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  
+  "name": "HappyPing",
+  "version": "1.0",
+
+  "description": "To cheer you, its always there.",
+  
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "browser_action": {
+    "default_icon": "icons/icon48.png",
+    "default_title": "HappyPing",
+    "default_popup": "templates/popup.html"
+  },
+  "background": {
+    "scripts": ["service/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab",
+    "<all_urls>" 
+  ]
+}
