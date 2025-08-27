@@ -37,9 +37,13 @@ firefox/
 ## UI Sample
 
 <div style="display: flex; gap: 12px; justify-content: center; align-items: center;">
-    <img src="./public/custom-newtab.png" alt="Custom New Tab" width="220"/>
-    <img src="./public/popup.png" alt="Popup UI" width="220"/>
-    <img src="./public/quote.png" alt="Quote UI" width="220"/>
+    <img src="./public/custom-newtab.png" alt="Custom New Tab" width="280"/>
+    <img src="./public/popup.png" alt="Popup UI" width="280"/>
+</div>
+<br>
+ <div style="display: flex; gap: 12px; justify-content: center; align-items: center;">
+    <img src="./public/quote.png" alt="Quote UI" width="280"/>
+    <img src="./public/extension.png" alt="Quote UI" width="280"/>
 </div>
 
 ## How It Works
